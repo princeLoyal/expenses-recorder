@@ -1,6 +1,6 @@
 import Expenses from "./components/UI/Expenses";
-function App() {
-  const expenses = [
+
+const expenses = [
     {
       title: 'New Tv',
       amount: 345.65,
@@ -16,9 +16,11 @@ function App() {
       amount: 500.45,
       date: new Date(),
     },
-  ]
+  ];
+
+function App() {
   const onAddExpenses = (expenseData) => {
-    console.log(expenseData);
+    expenses.push(expenseData);
   }
   return (
     <div className="App">
