@@ -20,12 +20,13 @@ const expenses = [
   ];
 
 function App() {
-  const [expensesList, setExpensesList] = useState([]);
+  const [expensesList, setExpensesList] = useState(expenses);
 
   const onAddExpenses = (expenseData) => {
     setExpensesList(prevExpensesList => {
        const updatedExpensesList = prevExpensesList;
        updatedExpensesList.unshift(expenseData);
+       alert(expenseData.title);
        return updatedExpensesList;
     });
   }
