@@ -24,9 +24,7 @@ function App() {
 
   const onAddExpenses = (expenseData) => {
     setExpensesList(prevExpensesList => {
-       const updatedExpensesList = prevExpensesList;
-       updatedExpensesList.unshift(expenseData);
-       alert(expenseData.title);
+       const updatedExpensesList = [...prevExpensesList, expenseData];
        return updatedExpensesList;
     });
   }
