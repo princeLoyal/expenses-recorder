@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Expenses from "./components/UI/Expenses";
 
 const expenses = [
@@ -19,12 +20,19 @@ const expenses = [
   ];
 
 function App() {
+  const [expensesList, setExpensesList] = useState(expenses);
+
   const onAddExpenses = (expenseData) => {
-    expenses.push(expenseData);
+    setExpensesList(prevExpensesList => {
+       const updatedExpensesList = prevExpensesList;
+       updatedExpensesList.unshift(expenseData);
+       return updatedExpensesList;
+    });
   }
+
   return (
     <div className="App">
-      <Expenses items={expenses} onAddExpenses={onAddExpenses}/> 
+      <Expenses items={expensesList} onAddExpenses={onAddExpenses}/> 
     </div>
   );
 }
