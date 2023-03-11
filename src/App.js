@@ -20,7 +20,7 @@ const expenses = [
   ];
 
 function App() {
-  const [expensesList, setExpensesList] = useState(expenses);
+  const [expensesList, setExpensesList] = useState([]);
 
   const onAddExpenses = (expenseData) => {
     setExpensesList(prevExpensesList => {
