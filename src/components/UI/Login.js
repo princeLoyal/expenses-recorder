@@ -15,8 +15,9 @@ const Login = (props) => {
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
      for(key in usersList){
-       if(userList[key].email === email){
-         if(userList[key].password === password){
+       if(usersList[key].email === email){
+         setValidEmail(true);
+         if(usersList[key].password === password){
             props.onLogin(email);
          }
        }
@@ -25,6 +26,7 @@ const Login = (props) => {
      if(validEmail){
         alert('Wrong password! Check and try again');
      }else{
+       setValidEmail(false);
        alert('Your email is not registered in the database. Kindly create an account or check form imputs');
      }
   }; 
