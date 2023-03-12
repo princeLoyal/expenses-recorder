@@ -4,7 +4,7 @@ const CreateAccount = (props) => {
   
 
   return(
-    <form onsubmit={submitHandler}>
+    <form>
        <input type='email' />
        <input type='password' />
        <button type='submit'>Login</button>
