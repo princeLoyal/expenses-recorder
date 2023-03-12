@@ -14,7 +14,7 @@ const CreateAccount = (props) => {
 
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
-     for(key in usersList){
+     for(const key in usersList){
        if(usersList[key].email === email){
           alert('Email exist in database. Try logging in');
        }
