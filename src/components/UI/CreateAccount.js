@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 const CreateAccount = (props) => {
   const emailRef = useRef();
@@ -12,21 +12,22 @@ const CreateAccount = (props) => {
     const userData = {
       email:email,
       password:password,
-      id: Math.round(Math.random() * 10000),
+      id: Math.round(Math.random() * 10000)
     }
 
-    const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json')
+    const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
     const usersList = await response.json();
     for(const key in usersList){
       if(usersList[key].email === email){
          alert('Email already in database. Try logging in.');
+         return;
       }
     }
 
     const createAccResponse = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json',{
        method: 'POST',
        body: JSON.stringify(userData),
-     })
+     });
     const data = await createAccResponse.json();
 
     props.onLogin(email);
