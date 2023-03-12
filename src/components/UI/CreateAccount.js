@@ -4,7 +4,7 @@ const CreateAccount = (props) => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const formSubmitHander = async (event) = {
+  const formSubmitHandler = async (event) = {
     event.preventDefault();
 
     const email = emailRef.current.value;
@@ -15,26 +15,13 @@ const CreateAccount = (props) => {
       id: Math.round(Math.random() * 10000)
     }
 
-    const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
-    const usersList = await response.json();
-    for(const key in usersList){
-      if(usersList[key].email === email){
-         alert('Email already in database. Try logging in.');
-         return;
-      }
-    }
-
-    const createAccResponse = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json',{
-       method: 'POST',
-       body: JSON.stringify(userData),
-     });
-    const data = await createAccResponse.json();
+    
 
     props.onLogin(email);
   }
 
   return(
-    <form>
+    <form onSubmit={formSubmitHandler}>
        <label htmlFor='email'>Email: </label>
        <input id='email' type='email' ref={emailRef}/>
        <label htmlFor='password'>Password: </label>
