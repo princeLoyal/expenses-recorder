@@ -12,7 +12,7 @@ const CreateAccount = (props) => {
      const email = email.current.value;
      const password = password.current.value;
 
-     let response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
+     const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
      for(key in usersList){
        if(usersList[key].email === email){
@@ -25,10 +25,13 @@ const CreateAccount = (props) => {
         password:password,
         id: Math.round(Math.random() * 1000000),
      };
-     let response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json',{
+     const createAccountResponse = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json',{
        method: 'POST',
        body: JSON.stringify(loginInfo),
      });
+
+     const data = await createAccountResponse();
+     props.onLogIn();
      
   }; 
 
