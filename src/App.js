@@ -22,7 +22,7 @@ const expenses = [
 
 function App() {
   const [logginIn, setLogginIn] = useState(true);
-  const [creatingAccount, setCreatingAccount] = useState(false);
+  const [creatingAccount, setCreatingAccount] = useState(true);
   const [userEmail, setUserEmail] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [expensesList, setExpensesList] = useState(expenses);
