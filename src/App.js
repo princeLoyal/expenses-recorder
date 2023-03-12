@@ -21,8 +21,8 @@ const expenses = [
   ];
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [creatingAccount, setCreatingAccount] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [creatingAccount, setCreatingAccount] = useState(false);
 
   return (
     <div className="App">
