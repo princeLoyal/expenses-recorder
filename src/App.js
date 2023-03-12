@@ -24,7 +24,7 @@ function App() {
   const [logginIn, setLogginIn] = useState(true);
   const [creatingAccount, setCreatingAccount] = useState(true);
   const [userEmail, setUserEmail] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [expensesList, setExpensesList] = useState(expenses);
 
   const onAddExpenses = (expenseData) => {
