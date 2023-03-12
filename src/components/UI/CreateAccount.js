@@ -8,7 +8,7 @@ const CreateAccount = (props) => {
     event.preventDefault();
 
     const email = emailRef.current.value;
-    const password = emailRef.current.value;
+    const password = passwordRef.current.value;
     const userData = {
       email:email,
       password:password,
