@@ -33,13 +33,13 @@ function App() {
        return updatedExpensesList;
     });
   }
-  const createAccountHandler = (email) => {
+  const loginHandler = (email) => {
      setUserEmail(email);
      setIsLoggedIn(true);
   }
   return (
     <div className="App">
-     { creatingAccount && <CreateAccount onCreateAccount={createAccountHandler} /> }
+     { creatingAccount && <CreateAccount onLogin={loginHandler} /> }
      { isLoggedIn &&  <Expenses items={expensesList} onAddExpenses={onAddExpenses}/> } 
     </div>
   );
