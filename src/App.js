@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="App">
     // { creatingAccount && <CreateAccount onLogin={loginHandler} onClickLogin = {loginAndCreateAccountSwitchingHandler}/> }
-     <Expenses items={expensesList}/>
+     <Expenses items={expenses}/>
     </div>
   );
 }
