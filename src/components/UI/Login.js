@@ -28,7 +28,7 @@ alert('Email is valid')
      if(validEmail){
         alert('Wrong password! Check and try again');
      }else{
-alert('Email isn't valid')
+alert('Email isnt valid')
        setValidEmail(false);
        alert('Your email is not registered in the database. Kindly create an account or check form imputs');
      }
