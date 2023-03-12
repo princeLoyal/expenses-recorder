@@ -22,7 +22,7 @@ const expenses = [
 
 function App() {
   const [loggingIn, setLoggingIn] = useState(false);
-  const [creatingAccount, setCreatingAccount] = useState(false);
+  const [creatingAccount, setCreatingAccount] = useState(true);
   const [userEmail, setUserEmail] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [expensesList, setExpensesList] = useState(expenses);
@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="App">
     { creatingAccount && <CreateAccount /> }
-    { isLoggedIn && <Expenses items={expensesList}/> }
+    { isLoggedIn && <Expenses items={expensesList} onAddExpenses={onAddExpenses}/> }
     </div>
   );
 }
