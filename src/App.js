@@ -37,9 +37,20 @@ function App() {
      setUserEmail(email);
      setIsLoggedIn(true);
   }
+
+  const loginAndCreateAccountSwitchingHandler = (state) => {
+    if(state === 'login'){
+      setLogginIn(false);
+      setCreatingAccount(true);
+    }
+    if(state === 'createAccount'){
+      setLogginIn(true);
+      setCreatingAccount(false);
+    }
+  }
   return (
     <div className="App">
-     { creatingAccount && <CreateAccount onLogin={loginHandler} /> }
+     { creatingAccount && <CreateAccount onLogin={loginHandler} onClickLogin = {loginAndCreateAccountSwitchingHandler}/> }
      { isLoggedIn &&  <Expenses items={expensesList} onAddExpenses={onAddExpenses}/> } 
     </div>
   );
