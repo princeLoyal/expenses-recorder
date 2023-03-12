@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Expenses from "./components/UI/Expenses";
+import CreateAccount from "./components/UI/CreateAccount';
 
 const expenses = [
     {
@@ -20,6 +21,10 @@ const expenses = [
   ];
 
 function App() {
+  const logginIn, setLogginIn] = useState(true);
+  const [creatingAccount, setCreatingAccount] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [expensesList, setExpensesList] = useState(expenses);
 
   const onAddExpenses = (expenseData) => {
@@ -28,10 +33,14 @@ function App() {
        return updatedExpensesList;
     });
   }
-
+  const createAccountHandler = (email) => {
+     setUserEmail(email);
+     setIsLoggedIn(true);
+  }
   return (
     <div className="App">
-      <Expenses items={expensesList} onAddExpenses={onAddExpenses}/> 
+     { creatingAccount && <CreateAccount onCreateAccount={createAccountHandler} /> }
+     { isLoggedIn &&  <Expenses items={expensesList} onAddExpenses={onAddExpenses}/> } 
     </div>
   );
 }
