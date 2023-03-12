@@ -50,7 +50,7 @@ function App() {
   }
   return (
     <div className="App">
-    { creatingAccount && <CreateAccount /> }
+    { creatingAccount && <CreateAccount onLogin={loginHandler} onloginButtonClick={loginAndCreateAccountSwitchingHandler}/> }
     { isLoggedIn && <Expenses items={expensesList} onAddExpenses={onAddExpenses}/> }
     </div>
   );
