@@ -15,7 +15,9 @@ alert('ydhdhd')
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
      for(const key in usersList){
+alert('entered for ')
        if(usersList[key].email === email){
+alert('email match ')
          if(usersList[key].password === password){
             props.onLogin(email);
             return;
