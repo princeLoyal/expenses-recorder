@@ -6,12 +6,11 @@ const Login = (props) => {
   const passwordRef = useRef();
 
   const submitHandler = async (event) => {
-alert('ydhdhd')
      event.preventDefault();
 
      const email = email.current.value;
      const password = password.current.value;
-
+alert(email)
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
      for(const key in usersList){
