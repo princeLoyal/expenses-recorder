@@ -40,11 +40,11 @@ function App() {
 
   const loginAndCreateAccountSwitchingHandler = (state) => {
     if(state === 'login'){
-      setLogginIn(false);
+      setLoggingIn(false);
       setCreatingAccount(true);
     }
     if(state === 'createAccount'){
-      setLogginIn(true);
+      setLoggingIn(true);
       setCreatingAccount(false);
     }
   }
