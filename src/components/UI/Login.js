@@ -6,6 +6,7 @@ const Login = (props) => {
   const passwordRef = useRef();
 
   const submitHandler = async (event) => {
+alert('ydhdhd')
      event.preventDefault();
 
      const email = email.current.value;
