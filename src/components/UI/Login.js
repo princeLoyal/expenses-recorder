@@ -14,7 +14,7 @@ const Login = (props) => {
 
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
-     for(key in usersList){
+     for(const key in usersList){
        if(usersList[key].email === email){
          setValidEmail(true);
          if(usersList[key].password === password){
@@ -33,9 +33,14 @@ const Login = (props) => {
 
   return(
     <form onsubmit={submitHandler}>
-       <input type='email' ref='emailRef' />
-       <input type='password' ref='passwordRef' />
-       <button type='submit'>Login</button>
+       <label htmlFor='email'>Email: </label>
+       <input id='email' type='email' ref={emailRef} />
+       <label htmlFor='password'>Password: </label>
+       <input id='password' type='password' ref={passwordRef} />
+       <div className='form-actions'>
+         <button type='submit'>Login</button>
+         <button type='button' onClick={() => props.oncreateAccButtonClick('login')}>Create Account</button>
+       </div>
     </form>
   );
 }
