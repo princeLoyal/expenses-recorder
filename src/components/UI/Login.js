@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 
 const Login = (props) => {
-  const [validEmail, setValidEmail] = useState(false);
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -16,26 +15,20 @@ const Login = (props) => {
      const usersList = await response.json();
      for(const key in usersList){
        if(usersList[key].email === email){
-         setValidEmail(true);
-alert('Email is valid')
          if(usersList[key].password === password){
             props.onLogin(email);
             return;
+         } else {
+            alert('Password does not match!');
          }
        }
      }
      
-     if(validEmail){
-        alert('Wrong password! Check and try again');
-     }else{
-alert('Email isnt valid')
-       setValidEmail(false);
-       alert('Your email is not registered in the database. Kindly create an account or check form imputs');
-     }
+    alert('Email not in database. Try logging in');
   }; 
 
   return(
-    <form onsubmit={submitHandler}>
+    <form onSubmit={submitHandler}>
        <label htmlFor='email'>Email: </label>
        <input id='email' type='email' ref={emailRef} />
        <label htmlFor='password'>Password: </label>
