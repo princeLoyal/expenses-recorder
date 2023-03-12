@@ -21,11 +21,13 @@ const expenses = [
   ];
 
 function App() {
-  
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [creatingAccount, setCreatingAccount] = useState(true);
+
   return (
     <div className="App">
-    
-     <Expenses items={expenses}/>
+    { creatingAccount && <CreateAccount /> }
+    { loggedIn && <Expenses items={expenses}/> }
     </div>
   );
 }
