@@ -21,13 +21,37 @@ const expenses = [
   ];
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggingIn, setLoggingIn] = useState(false);
   const [creatingAccount, setCreatingAccount] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [expensesList, setExpensesList] = useState(expenses);
 
+  const onAddExpenses = (expenseData) => {
+    setExpensesList(prevExpensesList => {
+       const updatedExpensesList = [expenseData, ...prevExpensesList];
+       return updatedExpensesList;
+    });
+  }
+  const loginHandler = (email) => {
+     setUserEmail(email);
+     setIsLoggedIn(true);
+  }
+
+  const loginAndCreateAccountSwitchingHandler = (state) => {
+    if(state === 'login'){
+      setLogginIn(false);
+      setCreatingAccount(true);
+    }
+    if(state === 'createAccount'){
+      setLogginIn(true);
+      setCreatingAccount(false);
+    }
+  }
   return (
     <div className="App">
     { creatingAccount && <CreateAccount /> }
-    { loggedIn && <Expenses items={expenses}/> }
+    { isLoggedIn && <Expenses items={expensesList}/> }
     </div>
   );
 }
