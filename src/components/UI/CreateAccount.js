@@ -31,7 +31,7 @@ const CreateAccount = (props) => {
      });
 
      const data = await createAccountResponse();
-     props.onLogIn();
+     props.onLogIn(email);
      
   }; 
 
