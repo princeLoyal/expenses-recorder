@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Expenses from "./components/UI/Expenses";
-import CreateAccount from "./components/UI/CreateAccount" ;
-import Login from './components/UI/Login';
+import CreateAccount from "./components/LoginAndCreateAccount/CreateAccount" ;
+import Login from './components/LoginAndCreateAccount/Login';
 
 const expenses = [
     {
