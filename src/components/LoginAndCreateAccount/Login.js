@@ -1,8 +1,10 @@
-import React, { useRef, } from 'react';
+import React, { useRef, useState} from 'react';
 
 import './LoginAndCreateAccount.css';
 
 const Login = (props) => {
+  const [emailErrP, setEmailErrP] = useState('');
+  const [passwordErrP, setPasswordErrP] = useState();
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -13,7 +15,12 @@ const Login = (props) => {
      const email = emailRef.current.value;
      const password = passwordRef.current.value;
 
-     if(email === '' || password === ''){
+     if(email === ''){
+      setEmailErrP('Email field cannot be empty')
+      return;
+    }
+    if(email === ''){
+       setPasswordErrP('Password field cannot be empty')
       return;
     }
 
@@ -40,8 +47,10 @@ const Login = (props) => {
       <form onSubmit={submitHandler} className='loginAndCreateAccount'>
        <label htmlFor='email'>Email: </label>
        <input id='email' type='email' ref={emailRef} />
+       { emailErrP }
        <label htmlFor='password'>Password: </label>
        <input id='password' type='password' ref={passwordRef} />
+       { passwordErrP }
        <div className='form-actions'>
          <button type='submit' className='active'>Login</button>
          <button type='button' onClick={() => props.oncreateAccButtonClick('login')}>Create Account</button>
