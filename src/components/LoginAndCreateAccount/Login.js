@@ -12,13 +12,18 @@ const Login = (props) => {
 
      const email = emailRef.current.value;
      const password = passwordRef.current.value;
+
+     if(email === '' || password === ''){
+      return;
+    }
+
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
+
      for(const key in usersList){
        if(usersList[key].email === email){
          if(usersList[key].password === password){
             props.onLogin(email);
-            return;
          } else {
             alert('Password does not match!');
             return;

@@ -11,6 +11,11 @@ const CreateAccount = (props) => {
 
     const email = emailRef.current.value;
     const password = passwordRef.current.value;
+
+    if(email === '' || password === ''){
+      return;
+    }
+
     const userData = {
       email:email,
       password:password,
