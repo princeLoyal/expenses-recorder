@@ -8,20 +8,18 @@ const Login = (props) => {
   const submitHandler = async (event) => {
      event.preventDefault();
 
-     const email = email.current.value;
-     const password = password.current.value;
-alert(email)
+     const email = emailRef.current.value;
+     const password = passwordRef.current.value;
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
      const usersList = await response.json();
      for(const key in usersList){
-alert('entered for ')
        if(usersList[key].email === email){
-alert('email match ')
          if(usersList[key].password === password){
             props.onLogin(email);
             return;
          } else {
             alert('Password does not match!');
+            return;
          }
        }
      }

@@ -1,8 +1,7 @@
 import './ExpenseItems.css';
 import ExpenseDate from './ExpenseDate';
 import Card from './Card';
-function ExpenseItems(props){
-    const {expenseDate, expenseTitle, expenseAmount} = props;
+function ExpenseItems({expenseDate, expenseTitle, expenseAmount}){
     return (
         <Card className='expense-item'>
                 <ExpenseDate expenseDate={expenseDate}/>

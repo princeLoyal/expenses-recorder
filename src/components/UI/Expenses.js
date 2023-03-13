@@ -1,24 +1,64 @@
+import React, { useState, useEffect } from 'react';
+
 import './Expenses.css';
 import ExpenseItems from './ExpenseItem';
 import ExpenseForm from '../Expenses/ExpenseForm';
-function Expenses(props){
-    const {items} = props;
+
+
+const expenses = [
+    {
+      title: 'New Tv (This is a dummy Expense!)',
+      amount: 345.65,
+      date: new Date('2020, 01, 31'),
+      id: 1,
+    },
+    {
+      title: 'New Radio Set (This is a dummy Expense!)',
+      amount: 123.65,
+      date: new Date('2020, 03, 8'),
+      id: 2,
+    },
+    {
+      title: 'Some Cusions (This is a dummy Expense!)',
+      amount: 500.45,
+      date: new Date(),
+      id: 3,
+    },
+];
+
+function Expenses(){
+    const [ expensesList, setExpensesList ] = useState(expenses);
+
+    useEffect(() => {
+      const getExpenses = async () => {
+        let email = localStorage.getItem('Email');
+        const index = email.indexOf('@');
+        email = email.substring(0, index);
+        const response = await fetch(`https://expenses-recorder-f372f-default-rtdb.firebaseio.com/usersExpenses/${email}/expenses.json`);
+        const userExpenses = await response.json();
+        if(userExpenses){
+         setExpensesList(userExpenses);
+        }
+      }
+      getExpenses();
+    }, [expensesList]);
+
+    const onAddExpenses = (expenseData) => {
+        setExpensesList(prevExpensesList => {
+           const updatedExpensesList = [expenseData, ...prevExpensesList];
+           return updatedExpensesList;
+        });
+      }
+
     return(
         <div>
-            <ExpenseForm onAddExpenses={props.onAddExpenses}/>
+            <ExpenseForm onAddExpenses={onAddExpenses}/>
             <div className='expenses'>
-                <ExpenseItems expenseTitle={items[0].title}
-                    expenseAmount = {items[0].amount}
-                    expenseDate = {items[0].date}
-                    />
-                <ExpenseItems expenseTitle={items[1].title}
-                expenseAmount = {items[1].amount}
-                expenseDate = {items[1].date}
-                />
-                <ExpenseItems expenseTitle={items[2].title}
-                expenseAmount = {items[2].amount}
-                expenseDate = {items[2].date}
-                />
+                {
+                    expensesList.map( expense => (
+                        <ExpenseItems key={expense.id} expenseDate={new Date(expense.date)} expenseTitle={expense.title} expenseAmount={expense.amount}/>
+                    ))
+                }
             </div>
         </div>
     )
