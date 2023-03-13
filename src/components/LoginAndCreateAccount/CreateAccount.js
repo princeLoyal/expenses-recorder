@@ -1,4 +1,6 @@
-import React, { useRef } from 'react';
+import React, { Fragment, useRef } from 'react';
+
+import './LoginAndCreateAccount.css';
 
 const CreateAccount = (props) => {
   const emailRef = useRef();
@@ -34,16 +36,19 @@ const CreateAccount = (props) => {
   }
 
   return(
-    <form onSubmit={formSubmitHandler}>
+    <div className='container'>
+      <h1>Create Account</h1>
+      <form onSubmit={formSubmitHandler} className='loginAndCreateAccount'>
        <label htmlFor='email'>Email: </label>
        <input id='email' type='email' ref={emailRef}/>
        <label htmlFor='password'>Password: </label>
        <input id='password' type='password' ref={passwordRef}/>
        <div className='form-actions'>
-         <button type='submit'>Create Account</button>
+         <button type='submit' className='active'>Create Account</button>
          <button type='button' onClick={() => props.onloginButtonClick('createAccount')}>Log In</button>
        </div>
-    </form>
+      </form>
+    </div>
   );
 }
 export default CreateAccount;

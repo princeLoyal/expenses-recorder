@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, } from 'react';
+
+import './LoginAndCreateAccount.css';
 
 const Login = (props) => {
 
@@ -28,16 +30,19 @@ const Login = (props) => {
   }; 
 
   return(
-    <form onSubmit={submitHandler}>
+    <div className='container'>
+      <h1>Log In</h1>
+      <form onSubmit={submitHandler} className='loginAndCreateAccount'>
        <label htmlFor='email'>Email: </label>
        <input id='email' type='email' ref={emailRef} />
        <label htmlFor='password'>Password: </label>
        <input id='password' type='password' ref={passwordRef} />
        <div className='form-actions'>
-         <button type='submit'>Login</button>
+         <button type='submit' className='active'>Login</button>
          <button type='button' onClick={() => props.oncreateAccButtonClick('login')}>Create Account</button>
        </div>
-    </form>
+      </form>
+    </div>
   );
 }
 export default Login;
