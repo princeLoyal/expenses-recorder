@@ -43,7 +43,7 @@ function Expenses(){
       getExpenses();
     }, []);
     useEffect(() => {
-      const sendUpdatedListToDatabase = () => {
+      const sendUpdatedListToDatabase = async () => {
         let email = localStorage.getItem('Email');
         const index = email.indexOf('@');
         email = email.substring(0, index);
