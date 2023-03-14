@@ -26,6 +26,8 @@ const expenses = [
     },
 ];
 
+let firstMount = true;
+
 function Expenses(){
     const [ expensesList, setExpensesList ] = useState(expenses);
 
@@ -53,7 +55,13 @@ function Expenses(){
         });
         const data = await response.json();
       }
-      sendUpdatedListToDatabase();
+
+      if(!firstMount){
+         sendUpdatedListToDatabase();
+      } else {
+         firstMount = false;
+      }
+
     }, [expensesList]);
 
     const onAddExpenses = (expenseData) => {
