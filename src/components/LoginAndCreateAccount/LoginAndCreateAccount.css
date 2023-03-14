@@ -1,25 +1,30 @@
-h1 {
+.loginAndCreateAccount h1 {
    color: blue; 
 }
 
-.container {
+.loginAndCreateAccount errP {
+   font-size: 0.8rem;
+   Color: red;
+   Margin: 5px 0;
+}
+.loginAndCreateAccount .container {
     width:95%;
     margin: auto;
     text-align: center;
 }
 
-.loginAndCreateAccount {
+.loginAndCreateAccount form{
     margin: 2rem auto;
     width:400px;
     text-align: start;
 }
 
-.loginAndCreateAccount label {
+.loginAndCreateAccount form label {
     display: block;
     font-weight: bold;
 }
 
-.loginAndCreateAccount input {
+.loginAndCreateAccount form input {
     display: block;
     width: 100%;
     margin: 0.5rem 0;
@@ -28,20 +33,20 @@ h1 {
     padding: 0.3rem 0.5rem;
 }
 
-.loginAndCreateAccount input:active, .loginAndCreateAccount input:focus{
+.loginAndCreateAccount form input:active, .loginAndCreateAccount input:focus{
     background: transparent;
     border-color: grey;
     outline: none;
 }
 
-.loginAndCreateAccount .form-actions {
+.loginAndCreateAccount form .form-actions {
     width: 105%;
     display: flex;
     justify-content: end;
     gap:1rem;
 }
 
-.loginAndCreateAccount .form-actions button {
+.loginAndCreateAccount form .form-actions button {
     border: none;
     padding: 0.5em 1rem;
     background: transparent;
@@ -49,7 +54,7 @@ h1 {
     cursor: pointer;
 }
 
-.loginAndCreateAccount .form-actions .active {
+.loginAndCreateAccount form .form-actions .active {
     background: blue;
     border-radius: 10px;
     color:white;
