@@ -27,6 +27,7 @@ const Login = (props) => {
        setEmailErrP(null);
        if(password === ''){
           setPasswordErrP('Password field cannot be empty');
+          return;
        }
     }
 
