@@ -2,7 +2,7 @@
    color: blue; 
 }
 
-.loginAndCreateAccount errP {
+.loginAndCreateAccount .errP {
    font-size: 0.8rem;
    Color: red;
    Margin: 5px 0;
