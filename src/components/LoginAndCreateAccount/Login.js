@@ -38,6 +38,7 @@ const Login = (props) => {
        if(usersList[key].email === email){
          if(usersList[key].password === password){
             props.onLogin(email);
+            return;
          } else {
             alert('Password does not match!');
             return;
