@@ -16,16 +16,18 @@ const CreateAccount = (props) => {
     const password = passwordRef.current.value;
 
     if(email === ''){
-      setEmailErrP('Email field cannot be empty')
+      setEmailErrP('Email field cannot be empty');
+      if(password === ''){
+         setPasswordErrP('Password field cannot be empty');
+      } else {
+         setPasswordErrP(null);
+      }
       return;
     } else {
        setEmailErrP(null);
-    }
-    if(password === ''){
-       setPasswordErrP('Password field cannot be empty')
-      return;
-    } else {
-       setPasswordErrP(null);
+       if(password === ''){
+          setPasswordErrP('Password field cannot be empty');
+       }
     }
 
     const userData = {
