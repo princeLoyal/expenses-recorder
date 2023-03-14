@@ -1,5 +1,6 @@
 .loginAndCreateAccount h1 {
    color: blue; 
+   text-align: center;
 }
 
 .loginAndCreateAccount .errP {
@@ -10,13 +11,11 @@
 .loginAndCreateAccount .container {
     width:95%;
     margin: auto;
-    text-align: center;
 }
 
 .loginAndCreateAccount form{
     margin: 2rem auto;
     width:400px;
-    text-align: start;
 }
 
 .loginAndCreateAccount form label {
