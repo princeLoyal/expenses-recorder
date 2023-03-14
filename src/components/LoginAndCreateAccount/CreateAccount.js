@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import './LoginAndCreateAccount.css';
 
 const CreateAccount = (props) => {
-  const [emailErrP, setEmailErrP] = useState('');
+  const [emailErrP, setEmailErrP] = useState(null);
   const [passwordErrP, setPasswordErrP] = useState();
 
   const emailRef = useRef();
@@ -18,10 +18,14 @@ const CreateAccount = (props) => {
     if(email === ''){
       setEmailErrP('Email field cannot be empty')
       return;
+    } else {
+       setEmailP(null);
     }
-    if(email === ''){
+    if(password === ''){
        setPasswordErrP('Password field cannot be empty')
       return;
+    } else {
+       setPasswordErrP(null);
     }
 
     const userData = {
