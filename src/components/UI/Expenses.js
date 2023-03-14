@@ -41,6 +41,19 @@ function Expenses(){
         }
       }
       getExpenses();
+    }, []);
+    useEffect(() => {
+      const sendUpdatedListToDatabase = () => {
+        let email = localStorage.getItem('Email');
+        const index = email.indexOf('@');
+        email = email.substring(0, index);
+        const response = await fetch(`https://expenses-recorder-f372f-default-rtdb.firebaseio.com/usersExpenses/${email}/expenses.json`, {
+          method: 'PUT',
+          body: JSON.stringify(expensesList),
+        });
+        const data = await response.json();
+      }
+      sendUpdatedListToDatabase();
     }, [expensesList]);
 
     const onAddExpenses = (expenseData) => {
