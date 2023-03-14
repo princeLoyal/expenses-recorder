@@ -66,8 +66,14 @@ function Expenses(){
 
     const onAddExpenses = (expenseData) => {
         setExpensesList(prevExpensesList => {
-           const updatedExpensesList = [expenseData, ...prevExpensesList];
-           return updatedExpensesList;
+           if(!firstMount){
+            const updatedExpensesList = [expenseData, ...prevExpensesList];
+            return updatedExpensesList;
+           } else {
+              const updatedExpensesList = [];
+              updatedExpensesList.push(expenseData);
+              return updatedExpensesList;
+           }
         });
       }
 
