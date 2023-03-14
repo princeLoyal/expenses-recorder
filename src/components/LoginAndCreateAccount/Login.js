@@ -16,12 +16,18 @@ const Login = (props) => {
      const password = passwordRef.current.value;
 
      if(email === ''){
-      setEmailErrP('Email field cannot be empty')
+      setEmailErrP('Email field cannot be empty');
+      if(password === ''){
+         setPasswordErrP('Password field cannot be empty');
+      } else {
+         setPasswordErrP(null);
+      }
       return;
-    }
-    if(email === ''){
-       setPasswordErrP('Password field cannot be empty')
-      return;
+    } else {
+       setEmailErrP(null);
+       if(password === ''){
+          setPasswordErrP('Password field cannot be empty');
+       }
     }
 
      const response = await fetch('https://expenses-recorder-f372f-default-rtdb.firebaseio.com/users.json');
@@ -42,15 +48,15 @@ const Login = (props) => {
   }; 
 
   return(
-    <div className='container'>
+    <div className='container loginAndCreateAccount'>
       <h1>Log In</h1>
-      <form onSubmit={submitHandler} className='loginAndCreateAccount'>
+      <form onSubmit={submitHandler} >
        <label htmlFor='email'>Email: </label>
        <input id='email' type='email' ref={emailRef} />
-       { emailErrP }
+       { emailErrP && <p className='errP'>{emailErrP}</p> }
        <label htmlFor='password'>Password: </label>
        <input id='password' type='password' ref={passwordRef} />
-       { passwordErrP }
+       { passwordErrP && <p className='errP'>{passwordErrP}</p> }
        <div className='form-actions'>
          <button type='submit' className='active'>Login</button>
          <button type='button' onClick={() => props.oncreateAccButtonClick('login')}>Create Account</button>
