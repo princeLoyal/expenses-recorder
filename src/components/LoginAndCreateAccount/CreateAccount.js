@@ -49,15 +49,15 @@ const CreateAccount = (props) => {
   }
 
   return(
-    <div className='container'>
+    <div className='container loginAndCreateAccount'>
       <h1>Create Account</h1>
-      <form onSubmit={formSubmitHandler} className='loginAndCreateAccount'>
+      <form onSubmit={formSubmitHandler}>
        <label htmlFor='email'>Email: </label>
        <input id='email' type='email' ref={emailRef}/>
-       { emailErrP }
+       { emailErrP && <p className='errP'>{emailErrP}</p> }
        <label htmlFor='password'>Password: </label>
        <input id='password' type='password' ref={passwordRef}/>
-       { passwordErrP }
+       { passwordErrP && <p className='errP'>{passwordErrP}</p> }
        <div className='form-actions'>
          <button type='submit' className='active'>Create Account</button>
          <button type='button' onClick={() => props.onloginButtonClick('createAccount')}>Log In</button>
