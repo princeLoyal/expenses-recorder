@@ -58,8 +58,6 @@ function Expenses(){
 
       if(!firstMount){
          sendUpdatedListToDatabase();
-      } else {
-         firstMount = false;
       }
 
     }, [expensesList]);
@@ -72,6 +70,7 @@ function Expenses(){
            } else {
               const updatedExpensesList = [];
               updatedExpensesList.push(expenseData);
+              firstMount = false;
               return updatedExpensesList;
            }
         });
