@@ -19,7 +19,7 @@ const CreateAccount = (props) => {
       setEmailErrP('Email field cannot be empty')
       return;
     } else {
-       setEmailP(null);
+       setEmailErrP(null);
     }
     if(password === ''){
        setPasswordErrP('Password field cannot be empty')
