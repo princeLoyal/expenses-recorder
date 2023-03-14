@@ -15,6 +15,11 @@ const NewExpense = (props) => {
     }
     const submitHandler = (event) => {
         event.preventDefault();
+
+        if(enteredTitle === '' || enteredAmount === '' || enteredDate === ''){
+           alert('Input fields cannot be empty');
+           return;
+        }
         const expenseData = {
             title: enteredTitle,
             amount: enteredAmount,
